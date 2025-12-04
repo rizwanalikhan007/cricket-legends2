@@ -15,8 +15,8 @@ function App() {
     setSearched(true);
 
     try {
-      const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:5001';
-      const response = await fetch(`${apiUrl}/api/search?q=${encodeURIComponent(searchQuery)}`);
+      const apiUrl = import.meta.env.VITE_API_URL || '/api';
+      const response = await fetch(`${apiUrl}/search?q=${encodeURIComponent(searchQuery)}`);
       const data = await response.json();
       setCricketers(data);
     } catch (error) {
