@@ -1,5 +1,9 @@
+```json
 {
     "version": 2,
+    "buildCommand": "cd frontend && npm install && npm run build",
+    "outputDirectory": "frontend/dist",
+    "framework": "vite",
     "builds": [
         {
             "src": "backend/index.py",
@@ -23,7 +27,14 @@
             "dest": "frontend/$1"
         }
     ],
+    "rewrites": [
+        {
+            "source": "/api/:path*",
+            "destination": "/api"
+        }
+    ],
     "env": {
         "PYTHONPATH": "backend"
     }
 }
+```
