@@ -1,9 +1,15 @@
 from flask import Flask, request, jsonify
-from flask_cors import CORS
 import sqlite3
 
 app = Flask(__name__)
-CORS(app)
+
+# Manual CORS handling
+@app.after_request
+def after_request(response):
+    response.headers.add('Access-Control-Allow-Origin', '*')
+    response.headers.add('Access-Control-Allow-Headers', 'Content-Type')
+    response.headers.add('Access-Control-Allow-Methods', 'GET, POST, OPTIONS')
+    return response
 
 def get_db_connection():
     conn = sqlite3.connect('cricketers.db')
@@ -34,6 +40,15 @@ def search_cricketer():
         })
     
     return jsonify(results)
+
+@app.route('/')
+def home():
+    return jsonify({
+        'message': 'Cricket Legends API',
+        'endpoints': {
+            '/api/search?q=NAME': 'Search for cricketers by name'
+        }
+    })
 
 if __name__ == '__main__':
     app.run(debug=True, port=5001)
