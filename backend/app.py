@@ -36,6 +36,9 @@ def search_cricketer():
             'country': row['country'],
             'role': row['role'],
             'history': row['history'],
+            'achievements': row['achievements'],
+            'records': row['records'],
+            'controversies': row['controversies'],
             'image_url': row['image_url']
         })
     

@@ -143,7 +143,32 @@ function App() {
                   🎯 {selectedCricketer.role}
                 </span>
               </div>
-              <p className="modal-history">{selectedCricketer.history}</p>
+
+              <div className="modal-section">
+                <h3 className="section-title">📖 Biography</h3>
+                <p className="modal-history">{selectedCricketer.history}</p>
+              </div>
+
+              {selectedCricketer.achievements && (
+                <div className="modal-section">
+                  <h3 className="section-title">🏆 Achievements</h3>
+                  <p className="section-content">{selectedCricketer.achievements}</p>
+                </div>
+              )}
+
+              {selectedCricketer.records && (
+                <div className="modal-section">
+                  <h3 className="section-title">📊 Records</h3>
+                  <p className="section-content">{selectedCricketer.records}</p>
+                </div>
+              )}
+
+              {selectedCricketer.controversies && (
+                <div className="modal-section">
+                  <h3 className="section-title">⚠️ Controversies</h3>
+                  <p className="section-content">{selectedCricketer.controversies}</p>
+                </div>
+              )}
             </div>
           </div>
         </div>
